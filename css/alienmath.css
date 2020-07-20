@@ -1,0 +1,130 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    height: 100vh;
+    background-image: url(../img/space-background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.container {
+    display: grid;
+    height: 90vh;
+    width: 65%;
+    margin: 0 auto;
+    border: solid;
+    border-color: rgb(103, 174, 255);
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+    column-gap: 10px;
+    justify-items: center;
+}
+
+.spaceships {
+    /* border: solid; */
+    background-image: url("../img/flying-saucer.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    width: 100%;
+    font-family: "Roboto";
+    font-size: 1.1rem;
+    text-align: center;
+    padding-top: 8%;
+    color: white;
+}
+
+#cannon
+{
+    background-image: url("../img/space-fighter.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    width: 75px;
+    height: 10vh;
+    justify-self: center;
+    align-self: end;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    padding-top: 60px;
+}
+
+.game-panel {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: normal; 
+    width: 65%;
+    height: 8vh;
+    margin: 0 auto;
+    border: solid;
+    border-color: rgb(108, 123, 255);  
+    background-color: wheat; 
+    margin-top: 5px;
+}
+
+#time-left {
+    flex-basis: 30%;
+}
+#hit-count, #miss-count {
+    flex-basis: 20%;
+}
+
+#hit-percent {
+    flex-basis: 30%;
+}
+
+ #player-name {
+    flex-basis: 35%;
+    
+}
+
+#difficulty {
+    flex-basis: 25%;
+}
+
+#save-game, #restart-game {
+    flex-basis: 18%;
+    justify-self: center;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0 1%;
+    border-color: darkgray;
+    background-color: lightgray;
+}
+
+#mute-game {
+    flex-basis: 13%;
+    justify-self: center;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0 1%;
+    border-color: darkgray;
+    background-color: lightgray;
+}
+
+
+.game-panel *:not(span) {
+    padding-left: 5px;
+    flex-basis: 25%;
+    border: solid;
+    border-color: rgb(108, 123, 255);
+    border-width: thin; 
+}
+
+#status {
+    flex-basis: 85%;
+}
+span {
+    font-weight: 700;
+    color: rgb(3, 5, 151);
+    
+}

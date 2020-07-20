@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Alien Addition - Game</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/alienmath.css">
+    </head>
+
+    <body>
+        <main>
+            <div class="container">
+                <div class="spaceships">9 + 25</div>
+                <div class="spaceships">1 + 9</div>
+                <div class="spaceships">5 + 10</div>
+                <div class="spaceships">9 + 25</div>
+                <div class="spaceships">9 + 25</div>
+
+                <div id="cannon">Cannon</div>
+            </div>
+
+            <div class="game-panel">
+                <div id="time-left">Time left: <span id="time-left-value">90</span> secs</div>
+                <div id="hit-count">Hits: <span id="hit-count-value">0</span></div>
+                <div id="miss-count">Misses: <span id="miss-count-value">0</span></div>
+                <div id="hit-percent">Hit percentage: <span id="hit-percent-value">0</span>%</div>
+                
+                <div id="player-name">Player: <span id="player-name-value">Jon Snow</span></div>
+                <div id="difficulty">Difficulty: <span id="difficulty-value">EASY</span></div>
+                <div id="save-game">Save</div>
+                <div id="restart-game">Restart</div>
+                <div id="mute-game" class="mute-active">Mute: <span id="mute-game-value">YES</span></div>
+                <div id="status">Message: <span id="status-value">Press ARROW LEFT or RIGHT to move and SPACE to fire.</span></div>
+
+            </div>
+
+            <audio src="../audio/explosion.mp3" id="audio-explode"></audio>
+            <audio src="../audio/win.mp3" id="audio-win"></audio>
+            <audio src="../audio/laser-gun.mp3" id="audio-laser"></audio>
+            <audio src="../audio/without-fear.mp3" id="audio-game"></audio>
+
+        </main>
+        <!-- <footer>
+
+        </footer> -->
+        <script type="text/javascript" src="../js/alienmath.js"></script>
+    </body>
+</html>
