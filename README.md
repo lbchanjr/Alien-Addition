@@ -1,6 +1,6 @@
 # UFO-Invasion-Addition-Game
 
-MADS4007 Project - An Educational Alien Shooter Web App for Kids
+MADS4007 Project - An Educational Alien Shooter Web App for Kids.    
 (App can be played online using this link: https://alienaddition.louisechan.ca/)
 
 PROBLEM DESCRIPTION
