@@ -4,6 +4,7 @@
         <title>Alien Addition - Game</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='icon' href='../img/ufo.ico' type='image/x-icon'>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/alienmath.css">
@@ -12,14 +13,44 @@
     <body>
         <main>
             <div class="container">
-                <div class="spaceships">9 + 25</div>
-                <div class="spaceships">1 + 9</div>
-                <div class="spaceships">5 + 10</div>
-                <div class="spaceships">9 + 25</div>
-                <div class="spaceships">9 + 25</div>
+                <div class="spaceships">
+                    <p class="math-questions">9+25</p>
+                </div>
+                <div class="spaceships">
+                    <p class="math-questions">1+9</p>
+                </div>
+                <div class="spaceships">
+                    <p class="math-questions">5+10</p>
+                </div>
+                <div class="spaceships">
+                    <p class="math-questions">4+7</p>
+                </div>
+                <div class="spaceships">
+                    <p class="math-questions">12+3</p>
+                </div>
 
-                <div id="cannon">Cannon</div>
+                <!-- <div class="lasers">
+                    <span class="laser-line"></span>
+                </div>
+                <div class="lasers">
+                    <span class="laser-line"></span>
+                </div>
+                <div class="lasers">
+                    <span class="laser-line"></span>
+                </div>
+                <div class="lasers">
+                    <span class="laser-line"></span>
+                </div>
+                <div class="lasers">
+                    <span class="laser-line"></span>
+                </div> -->
+
+                <div id="cannon">
+                    <span id="cannon-data">Cannon</span>
+                </div>
             </div>
+
+            <div id="laser"></div>
 
             <div class="game-panel">
                 <div id="time-left">Time left: <span id="time-left-value">90</span> secs</div>

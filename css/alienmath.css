@@ -15,22 +15,27 @@ main {
 .container {
     display: grid;
     height: 90vh;
-    width: 65%;
+    width: auto;
     margin: 0 auto;
     border: solid;
     border-color: rgb(103, 174, 255);
     grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: min-content 1fr min-content; */
     column-gap: 10px;
+    grid-row-gap: 0;
     justify-items: center;
 }
 
+/* @media only screen and (min-width:800px) { */
 .spaceships {
     /* border: solid; */
+    height: 82px;
+    width: 150px;
     background-image: url("../img/flying-saucer.png");
     background-repeat: no-repeat;
-    background-position: top;
-    background-size: contain;
-    width: 100%;
+    background-position: bottom;
+    background-size: cover;
+    background-size: auto 100%;
     font-family: "Roboto";
     font-size: 1.1rem;
     text-align: center;
@@ -43,17 +48,69 @@ main {
     background-image: url("../img/space-fighter.png");
     background-repeat: no-repeat;
     background-position: top;
-    background-size: contain;
+    background-size: auto 100%;
     width: 75px;
-    height: 10vh;
+    height: 68px;
     justify-self: center;
-    align-self: end;
+    align-self: flex-end;   
+    display: flex; 
+    flex-direction: row;
+}
+
+#cannon-data {
+    /* border: solid; */
+    flex-basis: 100%;
+    align-self: flex-start;
     color: red;
     text-align: center;
     font-weight: bold;
-    font-size: 2rem;
-    padding-top: 60px;
+    font-size: 2rem;    
 }
+
+/* } */
+
+/* @media only screen and (max-width:799px) {
+    .spaceships {
+        border: solid;
+        background-image: url("../img/flying-saucer.png");
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: cover;
+        background-size: auto 100%;
+        font-family: "Roboto";
+        font-size: 1.1rem;
+        text-align: center;
+        padding-top: 8%;
+        color: white;
+    }
+
+    #cannon {
+        border: solid;
+        background-image: url("../img/space-fighter.png");
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: 100% auto;
+        justify-self: center;
+        align-self: end;
+        color: red;
+        text-align: center;
+        font-weight: bold;
+    }
+
+} */
+
+/* .lasers {
+    margin: 0 45%;
+    background-color: greenyellow;
+} */
+
+#laser {
+    /* border: solid; */
+    /* margin: 0 45%; */
+    background-color: greenyellow;
+    position: absolute;
+}
+
 
 .game-panel {
     font-family: 'Orbitron', sans-serif;
@@ -62,7 +119,7 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: normal; 
-    width: 65%;
+    width: 800px;
     height: 8vh;
     margin: 0 auto;
     border: solid;

@@ -18,13 +18,6 @@ const easySpeeds = {"min": 0.1, "max": 3};
 const hardSpeeds = {"min": 3.1, "max": 6};
 let lastUfoHeight = 0;
 
-const cannon = document.getElementById("cannon");
-const cannonBounds = cannon.getBoundingClientRect();
-const cannonTop = cannonBounds.top;
-
-const spaceshipBounds = document.querySelector(".spaceships").getBoundingClientRect();
-const spaceshipHeight = spaceshipBounds.bottom - spaceshipBounds.top;
-
 const INITIAL_TIMER_VALUE = 90;
 let timeLeft = INITIAL_TIMER_VALUE;
 
@@ -33,24 +26,56 @@ const winSound = document.getElementById("audio-win");
 const explodeSound = document.getElementById("audio-explode");
 const laserSound = document.getElementById("audio-laser");
 
+// Calculate ufo and cannon dimensions based on screen width
+const container = document.querySelector(".container");
+if (container.clientWidth < 800) {
+    // const ufoWidth = Math.floor((container.clientWidth - 50) / 5);
+    // const ufoHeight = Math.floor(ufoWidth/2)
+
+    // console.log(`UFO width: ${ufoWidth}, Ufo height: ${ufoHeight}`);
+
+    // const smallUFOs = document.querySelectorAll(".spaceships");
+    // for (let i = 0; i < smallUFOs.length; i++) {
+    //     smallUFOs[i].style.width = `${ufoWidth}px`;
+    //     smallUFOs[i].style.height = `${ufoHeight}px`;
+    // }
+
+    // const smallCannon = document.getElementById("cannon");
+    // smallCannon.style.height = `${ufoHeight}px`;
+    // smallCannon.style.width = "100%";
+
+    alert("Set browser width to at least 800 pixel or maximize browser window");
+
+}
+
+const spaceshipBounds = document.querySelector(".spaceships").getBoundingClientRect();
+const spaceshipHeight = spaceshipBounds.bottom - spaceshipBounds.top;
+
+const cannon = document.getElementById("cannon");
+const cannonBounds = cannon.getBoundingClientRect();
+const cannonTop = cannonBounds.top;
+
 console.log(`Cannon top: ${cannonTop} Spaceship height: ${spaceshipHeight}`);
 
-const moveUfoDown = (spaceship, speed) => {
+const moveUfoDown = (spaceship, speed, index) => {
 
     ufoTimers.push(setInterval(()=>{
         let marginTop = spaceship.style.marginTop;
         marginTop = Number(marginTop.substring(0, marginTop.indexOf("px")));
         marginTop += speed;
         spaceship.style.marginTop = marginTop + "px";
-        
+    
         const ufoBounds = spaceship.getBoundingClientRect();
+
+        const lasers = document.querySelectorAll(".lasers");
+        //lasers[index].style.height = (cannonTop-ufoBounds.bottom) + "px";
 
         //console.log(`UFO top: ${ufoBounds.top} UFO bottom: ${ufoBounds.bottom} Next bottom: ${ufoBounds.bottom + spaceshipHeight}`)
 
-        const cannonUpdatedBounds = document.getElementById("cannon").getBoundingClientRect();
-
-
-        if (cannonTop != cannonUpdatedBounds.top) {
+        // MARK: Commented out, use spaceship bounds instead for comparison.
+        //const cannonUpdatedBounds = document.getElementById("cannon").getBoundingClientRect();
+        //if (cannonTop != cannonUpdatedBounds.top) {
+        if (cannonTop <= ufoBounds.bottom) {
             // Halt movement of all spaceships
             stopAllSpaceships();
             // alert("collision detected!")
@@ -91,7 +116,7 @@ const moveUfoDown = (spaceship, speed) => {
 const moveSpaceShips = function() {
     console.log("ufos size: " + ufos.length);
     for (let i = 0; i < ufos.length; i++) {
-        moveUfoDown(ufos[i], spaceshipSpeed[i]);
+        moveUfoDown(ufos[i], spaceshipSpeed[i], i);
     }
 }
 
@@ -135,6 +160,8 @@ const generateUfoNumbersAndAnswer = () => {
     ufoFirstNum.length = 0;
     ufoSecondNum.length = 0;
 
+    const ufoQuestions = document.querySelectorAll(".math-questions");
+
     for (let i = 0; i < 5; i++) {
         const firstNum = Math.floor(Math.random() * 25) + 1;
         const secondNum = Math.floor(Math.random() * 9) + 1;
@@ -146,7 +173,8 @@ const generateUfoNumbersAndAnswer = () => {
             console.log(`UFO #${i} equation: ${ufoFirstNum[i]} + ${ufoSecondNum[i]}`)
     
             // Update space with correct number
-            ufos[i].innerText = `${firstNum} + ${secondNum}`;    
+            //ufos[i].innerText = `${firstNum} + ${secondNum}`;    
+            ufoQuestions[i].innerHTML = `${firstNum} + ${secondNum}`;    
         } else {
             console.log("Duplicate equation was generated! Retrying...")
             i--;
@@ -160,7 +188,8 @@ const generateUfoNumbersAndAnswer = () => {
     console.log("Correct answer index: " + correctAnswerIndex + " Correct answer: " + ufoCorrectAns);
 
     // Update answer on cannon
-    cannon.innerText = ufoCorrectAns;
+    const answer = document.getElementById("cannon-data");
+    answer.innerText = ufoCorrectAns;
 
 }
 
@@ -469,13 +498,8 @@ document.addEventListener("keydown",(event)=>{
     else if(event.key==" ")
     {
         console.log("SPACE key was pressed!");
-
         
-        
-        if (checkIfSoundIsMuted() === false) {
-            laserSound.load()
-            laserSound.play()
-        }
+        shootUFOWithLaser();
 
         if (checkIfUFOIsHit() === true) {
             stopAllSpaceships();
@@ -512,9 +536,9 @@ document.addEventListener("keydown",(event)=>{
 
         console.log(`Hit percentage: ${hitPercentage}%`);
 
-        // By default, always change speed and equations when cannon is fired.
-        generateRandomSpeeds();
-        generateUfoNumbersAndAnswer();
+        // // By default, always change speed and equations when cannon is fired.
+        // generateRandomSpeeds();
+        // generateUfoNumbersAndAnswer();
 
     }
     else
@@ -523,5 +547,42 @@ document.addEventListener("keydown",(event)=>{
     }
 
 });
+
+const shootUFOWithLaser = () => {
+    //stopAllSpaceships();
+
+    if (checkIfSoundIsMuted() === false) {
+        laserSound.load()
+        laserSound.play()
+    }
+
+    //const lasers = document.querySelectorAll(".laser-line");
+    const ufoBounds = document.querySelectorAll(".spaceships");
+    // lasers[columnNo-1].innerHTML = "&nbsp";
+    // lasers[columnNo-1].style.height = cannonTop - ufoBounds[columnNo-1];
+    const ufoTarget = ufoBounds[columnNo-1];
+    const targetBounds = ufoTarget.getBoundingClientRect();
+    console.log("Target bound: ")
+    console.log(targetBounds)
+
+    const laser = document.getElementById("laser");
+    laser.style.top = 0;
+    laser.style.left = `${targetBounds.right-76}px`;
+    laser.style.height = cannonTop+"px";
+    laser.innerHTML = "&nbsp";
+    // lasers[columnNo-1].innerHTML = "&nbsp";
+    // lasers[columnNo-1].style.height = cannonTop - ufoBounds[columnNo-1];
+
+    setTimeout(()=> {
+        //lasers[columnNo-1].innerHTML = "";
+        laser.innerHTML = "";
+        //moveSpaceShips();
+        // By default, always change speed and equations when cannon is fired.
+        generateRandomSpeeds();
+        generateUfoNumbersAndAnswer();
+
+    }, 100);
+
+}
 
 
