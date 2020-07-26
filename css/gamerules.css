@@ -17,11 +17,13 @@ main {
 }
 
 .container {
-    width: 65vw;
+    border: solid;
+    height: 75vh;
+    width: 75vh;
     background-image: url(../img/rules\ frame.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100% 100%;
     margin-top: 5vh;
     display: flex;
     flex-direction: column;
@@ -37,9 +39,9 @@ h3 {
 
 ul {
     font-size: .85rem;
-    margin-top: 25px; 
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-top: 15px; 
+    margin-left: 10%;
+    margin-right: 10%;
     text-align: justify;
     color: white;
 }
