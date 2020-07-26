@@ -18,7 +18,7 @@ main {
 }
 
 .container {
-    border: solid;
+    /* border: solid; */
     height: 75%;
     width: 75%;
     background-image: url(../img/rules\ frame.png);
