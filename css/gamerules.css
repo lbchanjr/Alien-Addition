@@ -5,6 +5,7 @@
 }
 
 main {
+    border:solid;
     height: 100vh;
     background-image: url(../img/space-background.jpg);
     background-repeat: no-repeat;
@@ -13,26 +14,34 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: space-between;
+    align-content: flex-start;
 }
 
 .container {
-    /* border: solid; */
-    height: 75vh;
-    width: 75vh;
+    border: solid;
+    height: 75%;
+    width: 75%;
     background-image: url(../img/rules\ frame.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin-top: 5vh;
+    /* padding-bottom: 5vh; */
     display: flex;
+    justify-self: center;
     flex-direction: column;
-    flex-basis: 70%;
+    flex-basis: 75%;
     
 } 
 
+#rules {
+    margin: 10%;
+    overflow: auto;
+}
+
 h3 {
-    margin-top: 10%;
+    /* margin-top: 10%; */
+    text-align: center;
     color: wheat;
     align-self: center
 }
@@ -40,8 +49,9 @@ h3 {
 ul {
     font-size: .85rem;
     margin-top: 15px; 
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 1rem;
+    /* margin-left: 12%;
+    margin-right: 10%; */
     text-align: justify;
     color: white;
 }
