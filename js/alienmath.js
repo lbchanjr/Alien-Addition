@@ -26,6 +26,8 @@ const winSound = document.getElementById("audio-win");
 const explodeSound = document.getElementById("audio-explode");
 const laserSound = document.getElementById("audio-laser");
 
+let autoplayPending = true;
+
 // Calculate ufo and cannon dimensions based on screen width
 const container = document.querySelector(".container");
 if (container.clientWidth < 800) {
@@ -325,23 +327,34 @@ if (gameInfo === undefined) {
 // Start moving the spaceships
 moveSpaceShips();
 
-let muteStatus = true;
-// // Check if there's a mute setting saved in the local storage
-// if (localStorage.hasOwnProperty("alienAudioMuted")) {
-//     // get mute status
-//     muteStatus = localStorage.getItem("alienAudioMuted");
-// }
+let muteStatus = false;
+// Check if there's a mute setting saved in the local storage
+if (localStorage.hasOwnProperty("alienAudioMuted")) {
+    // get mute status
+    muteStatus = localStorage.getItem("alienAudioMuted");
+}
 
-// if (muteStatus == "true") {
+if (muteStatus == "true") {
     document.getElementById("mute-game").classList.add("mute-active");
     gameSound.muted = true;
     document.getElementById("mute-game-value").innerText = "YES";
-// } else {
-//     document.getElementById("mute-game").classList.remove("mute-active");
-//     gameSound.play(); 
-//     gameSound.muted = false;
-//     document.getElementById("mute-game-value").innerText = "NO";
-// }
+} else {
+    document.getElementById("mute-game").classList.remove("mute-active");
+    const promise = gameSound.play();
+    if (promise !== undefined) {
+        promise.then(_ => {
+            // Autoplay started!
+            autoplayPending = false;
+        }).catch(error => {
+            // Autoplay is being prevented by the browser.
+            alert("Browser is preventing game music to be auto-played.\nPressing game control keys will correct this issue.");
+            // Indicate that auto-play is not allow
+            autoplayPending = true;
+        });
+    } 
+    gameSound.muted = false;
+    document.getElementById("mute-game-value").innerText = "NO";
+}
 
 
 // Load player name info and difficulty level
@@ -462,9 +475,22 @@ document.getElementById("mute-game").addEventListener("click", ()=>{
         }
         gameSound.muted = false;
     }
+
+    localStorage.setItem("alienAudioMuted", gameSound.muted);
 }
 )
 
+const checkAutoPlayMusic = () => {
+    if (autoplayPending == true) {
+        const mute = document.getElementById("mute-game");
+        if (mute.classList.contains("mute-active") === false) {
+            if (gameOver === false && timeLeft >= 0) {
+                gameSound.play()
+            }
+            gameSound.muted = false;
+        }
+    }
+}
 // Key press listener to process cannon movements
 document.addEventListener("keydown",(event)=>{    
 
@@ -485,6 +511,9 @@ document.addEventListener("keydown",(event)=>{
             columnNo+=1;
             cannon.style.gridColumn=columnNo;
         }
+
+        // Check if music autoplay restriction needs to be corrected.
+        checkAutoPlayMusic();
     }
 
     else if(event.key=="ArrowLeft")
@@ -494,11 +523,16 @@ document.addEventListener("keydown",(event)=>{
             columnNo-=1;
             cannon.style.gridColumn=columnNo;
         }
+        // Check if music autoplay restriction needs to be corrected.
+        checkAutoPlayMusic();
     }
     else if(event.key==" ")
     {
         console.log("SPACE key was pressed!");
         
+        // Check if music autoplay restriction needs to be corrected.
+        checkAutoPlayMusic();
+
         shootUFOWithLaser();
 
         if (checkIfUFOIsHit() === true) {
@@ -584,5 +618,7 @@ const shootUFOWithLaser = () => {
     }, 100);
 
 }
+
+
 
 
