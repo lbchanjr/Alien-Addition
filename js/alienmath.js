@@ -44,7 +44,9 @@ const adjustGameHeight = () => {
         console.log(`New gamescreen height is: ${bodyHeight-gameIntHeight}px`);
     }
 
-    scrollTo(0,document.body.scrollHeight);
+    // TODO: Figure out a way to scroll up mobile browsers address bar
+    //       since code below won't work
+    //scrollTo(0,document.body.scrollHeight);
 }
 
 const ufoClicked = (event) => {
@@ -561,8 +563,8 @@ document.addEventListener("keydown",(event)=>{
     }
 
     const statusMsg = document.getElementById("status-value").innerText;
-    if (statusMsg !== "Press ARROW LEFT or RIGHT to move and SPACE to fire.") {
-        document.getElementById("status-value").innerText = "Press ARROW LEFT or RIGHT to move and SPACE to fire.";
+    if (statusMsg !== "Press LEFT/RIGHT to move, press SPACE to fire or tap on UFO to destroy it.") {
+        document.getElementById("status-value").innerText = "Press LEFT/RIGHT to move, press SPACE to fire or tap on UFO to destroy it.";
     }
 
     if(event.key=="ArrowRight")
