@@ -43,6 +43,8 @@ const adjustGameHeight = () => {
         document.querySelector(".container").style.height = `${bodyHeight-gameIntHeight}px`;
         console.log(`New gamescreen height is: ${bodyHeight-gameIntHeight}px`);
     }
+
+    scrollTo(0,document.querySelector(".game-panel").scrollHeight);
 }
 
 const ufoClicked = (event) => {

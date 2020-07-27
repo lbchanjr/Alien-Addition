@@ -246,6 +246,12 @@ main {
 
 }
 
+@media only screen and (max-width:350px) {
+    .game-panel {
+        font-size: 0.5rem;
+    }
+}
+
 span {
     font-weight: 700;
     color: rgb(3, 5, 151);
