@@ -303,6 +303,7 @@ if (sessionStorage.hasOwnProperty("alienGameInfo")) {
             ufoFirstNum.length = 0;
             ufoSecondNum.length = 0;
 
+            const ufoQuestions = document.querySelectorAll(".math-questions");
             // Load saved game
             for (let i = 0; i < 5; i++) {
                 // Load all ufo speeds
@@ -314,13 +315,14 @@ if (sessionStorage.hasOwnProperty("alienGameInfo")) {
                 // Load all ufo math expressions
                 ufoFirstNum.push(loadSaveData.ufoNumbers[i].first);
                 ufoSecondNum.push(loadSaveData.ufoNumbers[i].second);
-                ufos[i].innerText = `${ufoFirstNum[i]} + ${ufoSecondNum[i]}`
+                ufoQuestions[i].innerText = `${ufoFirstNum[i]} + ${ufoSecondNum[i]}`
 
             }
 
             // Load correct answer
             ufoCorrectAns = loadSaveData.correctAnswer;
-            cannon.innerText = ufoCorrectAns;
+            const cannonAns = document.getElementById("cannon-data");
+            cannonAns.innerText = ufoCorrectAns;
 
             // Load hits, misses to html
             hitCount = loadSaveData.hits;
