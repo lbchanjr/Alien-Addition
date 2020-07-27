@@ -28,6 +28,23 @@ const laserSound = document.getElementById("audio-laser");
 
 let autoplayPending = true;
 
+const adjustGameHeight = () => {
+    const bodyHeight = document.querySelector("body").offsetHeight;
+
+    const gameScrHeight = document.querySelector(".container").offsetHeight;
+    console.log(`Original gamescreen height is: ${gameScrHeight}px`);
+    const gameIntHeight = document.querySelector(".game-panel").offsetHeight;
+
+    console.log(`Body height: ${bodyHeight}, Game height: ${gameScrHeight+gameIntHeight}`);
+
+    if (bodyHeight < gameScrHeight+gameIntHeight) {
+        // game screen is passed the device height
+        // adjust the height to correct dimensions
+        document.querySelector(".container").style.height = `${bodyHeight-gameIntHeight}px`;
+        console.log(`New gamescreen height is: ${bodyHeight-gameIntHeight}px`);
+    }
+}
+
 const ufoClicked = (event) => {
     ufoClick = event.target;
     console.log(`Ufo #${ufoClick.id} was clicked.`);
@@ -51,6 +68,9 @@ if (container.clientHeight < 400) {
 }
 
 if (container.clientWidth < 800) {
+    // Make any adjustment to the game screen height
+    adjustGameHeight();
+ 
     const ufoWidth = Math.floor((container.clientWidth-8) / 5);
     const ufoHeight = Math.floor(ufoWidth/2)
     console.log(`UFO width: ${ufoWidth}, Ufo height: ${ufoHeight}`);
@@ -130,7 +150,8 @@ const moveUfoDown = (spaceship, speed, index) => {
             if (container.clientWidth >= 800) {
                 gameContainer.style.height = "90vh"
             } else {
-                gameContainer.style.height = "85vh"
+                adjustGameHeight();
+                //gameContainer.style.height = "85vh"
             }
             
             gameContainer.style.fontSize = "1.25rem"
@@ -428,7 +449,12 @@ const gameTimer = setInterval(()=>{
                                     <p style="color:white; font-weight=bold">CHECK DATA BELOW FOR YOUR SCORES.</p>`;
         gameContainer.style.color = "black";
         gameContainer.style.justifyContent = "center";
-        gameContainer.style.height = "90vh"
+        if (container.clientWidth >= 800) {
+            gameContainer.style.height = "90vh"
+        } else {
+            adjustGameHeight();
+            //gameContainer.style.height = "85vh"
+        }
         gameContainer.style.fontSize = "1.25rem"
         gameContainer.style.display = "flex";
         gameContainer.style.flexBasis = "100%"
@@ -660,6 +686,8 @@ const shootUFOWithLaser = () => {
     }, 100);
 
 }
+
+
 
 
 
