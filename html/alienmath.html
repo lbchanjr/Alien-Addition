@@ -13,20 +13,20 @@
     <body>
         <main>
             <div class="container">
-                <div class="spaceships">
-                    <p class="math-questions">9+25</p>
+                <div class="spaceships" id="1">
+                    <p class="math-questions" id="1">9+25</p>
                 </div>
-                <div class="spaceships">
-                    <p class="math-questions">1+9</p>
+                <div class="spaceships" id="2">
+                    <p class="math-questions" id="2">1+9</p>
                 </div>
-                <div class="spaceships">
-                    <p class="math-questions">5+10</p>
+                <div class="spaceships" id="3">
+                    <p class="math-questions" id="3">5+10</p>
                 </div>
-                <div class="spaceships">
-                    <p class="math-questions">4+7</p>
+                <div class="spaceships" id="4">
+                    <p class="math-questions" id="4">4+7</p>
                 </div>
-                <div class="spaceships">
-                    <p class="math-questions">12+3</p>
+                <div class="spaceships" id="5">
+                    <p class="math-questions" id="5">12+3</p>
                 </div>
 
                 <!-- <div class="lasers">
@@ -53,17 +53,18 @@
             <div id="laser"></div>
 
             <div class="game-panel">
-                <div id="time-left">Time left: <span id="time-left-value">90</span> secs</div>
-                <div id="hit-count">Hits: <span id="hit-count-value">0</span></div>
-                <div id="miss-count">Misses: <span id="miss-count-value">0</span></div>
-                <div id="hit-percent">Hit percentage: <span id="hit-percent-value">0</span>%</div>
+                <div id="time-left">Time left:&nbsp;<span id="time-left-value">90</span>secs</div>
+                <div id="hit-count">Hits:&nbsp;<span id="hit-count-value">0</span></div>
+                <div id="miss-count">Misses:&nbsp;<span id="miss-count-value">0</span></div>
+                <div id="hit-percent">Hit percentage:&nbsp;<span id="hit-percent-value">0</span>%</div>
                 
-                <div id="player-name">Player: <span id="player-name-value">Jon Snow</span></div>
-                <div id="difficulty">Difficulty: <span id="difficulty-value">EASY</span></div>
+                <div id="player-name">Player:&nbsp;<span id="player-name-value">Jon Snow</span></div>
+                <div id="difficulty">Difficulty:&nbsp;<span id="difficulty-value">EASY</span></div>
                 <div id="save-game">Save</div>
                 <div id="restart-game">Restart</div>
-                <div id="mute-game" class="mute-active">Mute: <span id="mute-game-value">YES</span></div>
-                <div id="status">Message: <span id="status-value">Press ARROW LEFT or RIGHT to move and SPACE to fire.</span></div>
+                <div id="mute-game" class="mute-active">Mute:&nbsp;<span id="mute-game-value">YES</span></div>
+                <div id="status">Message:&nbsp;<span id="status-value">Press ARROW LEFT or RIGHT to move and SPACE to fire.</span></div>
+                <!-- <div id="high-score">Highest HIT %:&nbsp;<span id="high-score-value">0</span></div> -->
             </div>
 
             <audio src="../audio/explosion.mp3" id="audio-explode"></audio>

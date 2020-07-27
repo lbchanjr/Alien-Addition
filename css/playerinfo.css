@@ -27,6 +27,12 @@ main {
     border: solid;
 }
 
+@media only screen and (max-width:799px) {
+    .container {
+        width: 95vw;
+    }
+}
+
 input {
     font-size: 1.5rem;
     width: 90%;

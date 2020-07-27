@@ -28,25 +28,51 @@ const laserSound = document.getElementById("audio-laser");
 
 let autoplayPending = true;
 
+const ufoClicked = (event) => {
+    ufoClick = event.target;
+    console.log(`Ufo #${ufoClick.id} was clicked.`);
+
+    // Move ufo to the clicked UFO's column
+    columnNo = parseInt(ufoClick.id);
+    cannon.style.gridColumn=columnNo;
+
+    // Shoot selected UFO
+    processShootSpaceship();
+}
+
+for (let i = 0; i < ufos.length; i++) {
+    ufos[i].addEventListener("click", ufoClicked);
+}
+
 // Calculate ufo and cannon dimensions based on screen width
 const container = document.querySelector(".container");
+if (container.clientHeight < 400) {
+    alert(`Screen height is not enough to play this game (height=${container.clientHeight}px).\nSwith to portrait mode.`);
+}
+
 if (container.clientWidth < 800) {
-    // const ufoWidth = Math.floor((container.clientWidth - 50) / 5);
-    // const ufoHeight = Math.floor(ufoWidth/2)
+    const ufoWidth = Math.floor((container.clientWidth-8) / 5);
+    const ufoHeight = Math.floor(ufoWidth/2)
+    console.log(`UFO width: ${ufoWidth}, Ufo height: ${ufoHeight}`);
 
-    // console.log(`UFO width: ${ufoWidth}, Ufo height: ${ufoHeight}`);
+    const smallUFOs = document.querySelectorAll(".spaceships");
+    for (let i = 0; i < smallUFOs.length; i++) {
+        smallUFOs[i].style.width = `${ufoWidth}px`;
+        smallUFOs[i].style.height = `${ufoHeight}px`;
+    }
 
-    // const smallUFOs = document.querySelectorAll(".spaceships");
-    // for (let i = 0; i < smallUFOs.length; i++) {
-    //     smallUFOs[i].style.width = `${ufoWidth}px`;
-    //     smallUFOs[i].style.height = `${ufoHeight}px`;
-    // }
+    const smallCannon = document.getElementById("cannon");
+    smallCannon.style.height = `${ufoHeight*2}px`;
+    smallCannon.style.width = "100%";
 
-    // const smallCannon = document.getElementById("cannon");
-    // smallCannon.style.height = `${ufoHeight}px`;
-    // smallCannon.style.width = "100%";
+    const gPanel = document.querySelector(".game-panel");
+    gPanel.style.width = container.offsetWidth;
 
-    alert("Set browser width to at least 800 pixel or maximize browser window");
+    // Re-adjust some of the game panel info
+    document.getElementById("time-left").innerHTML = `Time left:&nbsp;<span id="time-left-value">90</span>s`;
+    document.getElementById("hit-percent").innerHTML = `Hit ratio:&nbsp;<span id="hit-percent-value">0</span>%`;
+
+    //alert("Set browser width to at least 800 pixel or maximize browser window");
 
 }
 
@@ -63,6 +89,7 @@ const moveUfoDown = (spaceship, speed, index) => {
 
     ufoTimers.push(setInterval(()=>{
         let marginTop = spaceship.style.marginTop;
+        
         marginTop = Number(marginTop.substring(0, marginTop.indexOf("px")));
         marginTop += speed;
         spaceship.style.marginTop = marginTop + "px";
@@ -99,7 +126,13 @@ const moveUfoDown = (spaceship, speed, index) => {
                                        <p style="color:lightgreen; font-size=1.5rem; font-weight=bolder">THE ALIENS WERE ABLE TO OVERRUN YOUR BASE</p>`;
             gameContainer.style.color = "black";
             gameContainer.style.justifyContent = "center";
-            gameContainer.style.height = "90vh"
+
+            if (container.clientWidth >= 800) {
+                gameContainer.style.height = "90vh"
+            } else {
+                gameContainer.style.height = "85vh"
+            }
+            
             gameContainer.style.fontSize = "1.25rem"
             gameContainer.style.display = "flex";
             gameContainer.style.flexBasis = "100%"
@@ -530,49 +563,7 @@ document.addEventListener("keydown",(event)=>{
     {
         console.log("SPACE key was pressed!");
         
-        // Check if music autoplay restriction needs to be corrected.
-        checkAutoPlayMusic();
-
-        shootUFOWithLaser();
-
-        if (checkIfUFOIsHit() === true) {
-            stopAllSpaceships();
-            resetSpaceShipLocation();
-            
-            // Update number of hits
-            hitCount++;
-            // Update hit count display
-            document.getElementById("hit-count-value").innerText = hitCount;
-
-        } else {
-            missCount++;
-            // Update hit count display
-            document.getElementById("miss-count-value").innerText = missCount;
-        }
-
-        // Update percentage hit
-        hitPercentage = (hitCount / (hitCount + missCount)) * 100;
-        hitPercentage = hitPercentage.toFixed(1);
-
-        if (hitPercentage < 0.1) {
-            // Update percent hit value
-            document.getElementById("hit-percent-value").innerText = 0;
-        } else if (hitPercentage >= 100) {
-            // Update percent hit value
-            document.getElementById("hit-percent-value").innerText = 100;
-        } 
-        else {
-            // Update percent hit value
-            document.getElementById("hit-percent-value").innerText = hitPercentage;
-        }
-
-        
-
-        console.log(`Hit percentage: ${hitPercentage}%`);
-
-        // // By default, always change speed and equations when cannon is fired.
-        // generateRandomSpeeds();
-        // generateUfoNumbersAndAnswer();
+        processShootSpaceship();
 
     }
     else
@@ -581,6 +572,52 @@ document.addEventListener("keydown",(event)=>{
     }
 
 });
+
+const processShootSpaceship = () => {
+    // Check if music autoplay restriction needs to be corrected.
+    checkAutoPlayMusic();
+
+    shootUFOWithLaser();
+
+    if (checkIfUFOIsHit() === true) {
+        stopAllSpaceships();
+        resetSpaceShipLocation();
+        
+        // Update number of hits
+        hitCount++;
+        // Update hit count display
+        document.getElementById("hit-count-value").innerText = hitCount;
+
+    } else {
+        missCount++;
+        // Update hit count display
+        document.getElementById("miss-count-value").innerText = missCount;
+    }
+
+    // Update percentage hit
+    hitPercentage = (hitCount / (hitCount + missCount)) * 100;
+    hitPercentage = hitPercentage.toFixed(1);
+
+    if (hitPercentage < 0.1) {
+        // Update percent hit value
+        document.getElementById("hit-percent-value").innerText = 0;
+    } else if (hitPercentage >= 100) {
+        // Update percent hit value
+        document.getElementById("hit-percent-value").innerText = 100;
+    } 
+    else {
+        // Update percent hit value
+        document.getElementById("hit-percent-value").innerText = hitPercentage;
+    }
+
+    
+
+    console.log(`Hit percentage: ${hitPercentage}%`);
+
+    // // By default, always change speed and equations when cannon is fired.
+    // generateRandomSpeeds();
+    // generateUfoNumbersAndAnswer();
+}
 
 const shootUFOWithLaser = () => {
     //stopAllSpaceships();
@@ -601,7 +638,12 @@ const shootUFOWithLaser = () => {
 
     const laser = document.getElementById("laser");
     laser.style.top = 0;
-    laser.style.left = `${targetBounds.right-76}px`;
+    
+    if (container.clientWidth >= 800) {
+        laser.style.left = `${targetBounds.right-76}px`;
+    } else {
+        laser.style.left = `${targetBounds.right-(ufos[0].offsetWidth/2)-1}px`;
+    }
     laser.style.height = cannonTop+"px";
     laser.innerHTML = "&nbsp";
     // lasers[columnNo-1].innerHTML = "&nbsp";

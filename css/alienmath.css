@@ -26,56 +26,57 @@ main {
     justify-items: center;
 }
 
-/* @media only screen and (min-width:800px) { */
-.spaceships {
-    /* border: solid; */
-    height: 82px;
-    width: 150px;
-    background-image: url("../img/flying-saucer.png");
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
-    background-size: auto 100%;
-    font-family: "Roboto";
-    font-size: 1.1rem;
-    text-align: center;
-    padding-top: 8%;
-    color: white;
-}
-
-#cannon
-{
-    background-image: url("../img/space-fighter.png");
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: auto 100%;
-    width: 75px;
-    height: 68px;
-    justify-self: center;
-    align-self: flex-end;   
-    display: flex; 
-    flex-direction: row;
-}
-
-#cannon-data {
-    /* border: solid; */
-    flex-basis: 100%;
-    align-self: flex-start;
-    color: red;
-    text-align: center;
-    font-weight: bold;
-    font-size: 2rem;    
-}
-
-/* } */
-
-/* @media only screen and (max-width:799px) {
+@media only screen and (min-width:800px) {
     .spaceships {
-        border: solid;
+        /* border: solid; */
+        height: 82px;
+        width: 150px;
         background-image: url("../img/flying-saucer.png");
         background-repeat: no-repeat;
         background-position: bottom;
-        background-size: cover;
+        background-size: auto 100%;
+        font-family: "Roboto";
+        font-size: 1.1rem;
+        text-align: center;
+        padding-top: 8%;
+        color: white;
+    }
+
+    #cannon
+    {
+        background-image: url("../img/space-fighter.png");
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: auto 100%;
+        width: 75px;
+        height: 68px;
+        justify-self: center;
+        align-self: flex-end;   
+        display: flex; 
+        flex-direction: row;
+    }
+
+    #cannon-data {
+        /* border: solid; */
+        flex-basis: 100%;
+        align-self: flex-start;
+        color: red;
+        text-align: center;
+        font-weight: bold;
+        font-size: 2rem;    
+    }
+}
+
+@media only screen and (max-width:799px) {
+    .container {
+        height: 85vh;
+        column-gap: 2px;
+    }
+    .spaceships {
+        /* border: solid; */
+        background-image: url("../img/flying-saucer.png");
+        background-repeat: no-repeat;
+        background-position: bottom;
         background-size: auto 100%;
         font-family: "Roboto";
         font-size: 1.1rem;
@@ -85,19 +86,27 @@ main {
     }
 
     #cannon {
-        border: solid;
+        /* border: solid; */
         background-image: url("../img/space-fighter.png");
         background-repeat: no-repeat;
         background-position: top;
         background-size: 100% auto;
         justify-self: center;
-        align-self: end;
+        align-self: flex-end;
+        display: flex; 
+        flex-direction: row;
+    }
+
+        #cannon-data {
+        /* border: solid; */
+        flex-basis: 100%;
+        align-self: flex-start;
         color: red;
         text-align: center;
         font-weight: bold;
+        font-size: 1.5rem;     
     }
-
-} */
+} 
 
 /* .lasers {
     margin: 0 45%;
@@ -111,75 +120,132 @@ main {
     position: absolute;
 }
 
+@media only screen and (min-width:800px) {
+    .game-panel {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.75rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: normal; 
+        width: 800px;
+        height: 8vh;
+        margin: 0 auto;
+        border: solid;
+        border-color: rgb(108, 123, 255);  
+        background-color: wheat; 
+        margin-top: 5px;
+    }
 
-.game-panel {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: normal; 
-    width: 800px;
-    height: 8vh;
-    margin: 0 auto;
-    border: solid;
-    border-color: rgb(108, 123, 255);  
-    background-color: wheat; 
-    margin-top: 5px;
-}
-
-#time-left {
-    flex-basis: 30%;
-}
-#hit-count, #miss-count {
-    flex-basis: 20%;
-}
-
-#hit-percent {
-    flex-basis: 30%;
-}
-
- #player-name {
-    flex-basis: 35%;
+    #time-left {
+        flex-basis: 30%;
+    }
+    #hit-count, #miss-count {
+        flex-basis: 20%;
+    }
     
+    #hit-percent {
+        flex-basis: 30%;
+    }
+    
+     #player-name {
+        flex-basis: 35%;
+        
+    }
+    
+    #difficulty {
+        flex-basis: 25%;
+    }
+    
+    #save-game, #restart-game {
+        flex-basis: 18%;
+        justify-self: center;
+        text-align: center;
+        border-radius: 5px;
+        margin: 0 1%;
+        border-color: darkgray;
+        background-color: lightgray;
+    }
+    
+    #mute-game {
+        flex-basis: 13%;
+        justify-self: center;
+        text-align: center;
+        border-radius: 5px;
+        margin: 0 1%;
+        border-color: darkgray;
+        background-color: lightgray;
+    }
+    
+    .game-panel *:not(span) {
+        padding-left: 5px;
+        flex-basis: 25%;
+        border: solid;
+        border-color: rgb(108, 123, 255);
+        border-width: thin; 
+    }
+    
+    #status {
+        /* flex-basis: 65%; */
+        flex-basis: 85%;
+    }
+    
+    /* #high-score {
+        flex-basis: 20%;
+    } */
+
+}
+@media only screen and (max-width:799px) {
+    .game-panel {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.75rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between; 
+        margin: 0 auto;
+        border: solid;
+        border-color: rgb(108, 123, 255);  
+        background-color: wheat; 
+        margin-top: 5px;
+    }
+
+    .game-panel *:not(span) {
+        padding-left: 5px;
+        flex-basis: 30%;
+        /* border: solid;
+        border-color: rgb(108, 123, 255);
+        border-width: thin;  */
+    }
+
+    #status {
+        /* flex-basis: 65%; */
+        flex-basis: 90%;
+    }
+
+    #save-game, #restart-game, #mute-game {
+        /* flex-basis: 18%;
+        justify-self: center;
+        text-align: center; */
+        border-radius: 5px;
+        margin: 0 1%;
+        border-color: darkgray;
+        background-color: lightgray;
+    }
+    
+    /* #mute-game {
+        flex-basis: 13%;
+        justify-self: center;
+        text-align: center;
+        border-radius: 5px;
+        margin: 0 1%;
+        border-color: darkgray;
+        background-color: lightgray;
+    } */
+
+
 }
 
-#difficulty {
-    flex-basis: 25%;
-}
-
-#save-game, #restart-game {
-    flex-basis: 18%;
-    justify-self: center;
-    text-align: center;
-    border-radius: 5px;
-    margin: 0 1%;
-    border-color: darkgray;
-    background-color: lightgray;
-}
-
-#mute-game {
-    flex-basis: 13%;
-    justify-self: center;
-    text-align: center;
-    border-radius: 5px;
-    margin: 0 1%;
-    border-color: darkgray;
-    background-color: lightgray;
-}
-
-
-.game-panel *:not(span) {
-    padding-left: 5px;
-    flex-basis: 25%;
-    border: solid;
-    border-color: rgb(108, 123, 255);
-    border-width: thin; 
-}
-
-#status {
-    flex-basis: 85%;
-}
 span {
     font-weight: 700;
     color: rgb(3, 5, 151);
