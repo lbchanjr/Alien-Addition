@@ -1,4 +1,4 @@
-# Alien-Invasion-Addition-Game
+# Alien-Invasion-Math-Game
 
 MADS4007 Project - An Educational Alien Shooter Web App for Kids.    
 (App can be played online using this link: https://alienaddition.louisechan.ca/)
