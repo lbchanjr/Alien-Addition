@@ -3,6 +3,8 @@
 MADS4007 Project - An Educational Alien Shooter Web App for Kids.    
 (App can be played online using this link: https://alienaddition.louisechan.ca/)
 
+<img src="./screenshots/titlescreen.png" alt="Title screen" width="275" height="350">     <img src="./screenshots/rules.png" alt="Title screen" width="275" height="350">     <img src="./screenshots/gameplay.png" alt="Title screen" width="275" height="350">
+
 PROBLEM DESCRIPTION
 
 You have been asked to develop an educational Alien Invasion math game in the form of a
