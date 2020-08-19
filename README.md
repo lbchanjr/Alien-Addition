@@ -1,6 +1,7 @@
-# Alien-Invasion-Math-Game
+# Alien Addition Math Game
 
-MADS4007 Project - An Educational Alien Shooter Web App for Kids.    
+### An Educational Alien Shooter Web App for Kids.   
+
 (App can be played online using this link: https://alienaddition.louisechan.ca/)
 
 <img src="./screenshots/titlescreen.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/rules.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/gameplay.png" alt="Title screen" width="260" height="335">
