@@ -1,6 +1,6 @@
 # Alien Addition Math Game
 
-### An Educational Alien Shooter Web App for Kids.   
+### An Educational Alien Shooter Game for Kids.   
 
 #### Technologies/Concepts used
 
@@ -42,4 +42,4 @@
 
 #### Game link: https://alienaddition.louisechan.ca/
 
-#### Link to game specification: [Game Specification](./docs/Alien Addition Shooter Game - Programming specification.pdf)
+#### Link to game specification: <a href="./docs/Alien Addition Shooter Game - Programming specification.pdf" target="_blank">[Game Specification]</a>
