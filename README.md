@@ -2,9 +2,43 @@
 
 ### An Educational Alien Shooter Web App for Kids.   
 
-(App can be played online using this link: https://alienaddition.louisechan.ca/)
+## Technologies / Concepts used
+
+* HTML5, CSS3, JavaScript
+
+* Flexbox and Grid layouts
+
+* Persistent data storage using Local and Session storage APIs
+
+* DOM manipulation
+
+* Multiple web page application
+
+* Responsive page layout
+
+* Timer Intervals
+
+## Screenshots  
 
 <img src="./screenshots/titlescreen.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/rules.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/gameplay.png" alt="Title screen" width="260" height="335">
+
+## Features
+
+* Interactive menu for selecting game option (rules, selecting difficulty level, audio mute ON/OFF)
+
+* Timer interval manipulation for image animation purposes
+
+* Randomized math question display for each spaceship.
+
+* Text-based graphics of the hangman
+
+* Multiple categories of words to select from
+
+* Saving and loading a game from a flat test file
+
+(App can be played online using this link: https://alienaddition.louisechan.ca/)
+
+
 
 PROBLEM DESCRIPTION
 
