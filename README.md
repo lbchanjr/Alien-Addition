@@ -1,6 +1,6 @@
 # Alien Addition Math Game
 
-### An Educational Alien Shooter Web App for Kids.   
+### An Educational Alien Shooter Game for Kids.   
 
 #### Technologies/Concepts used
 
