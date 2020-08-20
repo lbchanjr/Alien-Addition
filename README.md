@@ -30,9 +30,9 @@
 
 * Randomized speed for target spaceships when descending.
 
-* Saving and loading a game
+* Saving and loading of game state.
 
-* Game sound and sound effects
+* Game sound and sound effects.
 
 * Score tracking with hit/miss percentage info.
 
