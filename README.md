@@ -1,8 +1,8 @@
 # Alien Addition Math Game
 
-### An Educational Alien Shooter Web App for Kids.   
+## An Educational Alien Shooter Web App for Kids.   
 
-## Technologies / Concepts used
+### Technologies / Concepts used
 
 * HTML5, CSS3, JavaScript
 
@@ -18,11 +18,11 @@
 
 * Timer Intervals
 
-## Screenshots  
+### Screenshots  
 
 <img src="./screenshots/titlescreen.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/rules.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/gameplay.png" alt="Title screen" width="260" height="335">
 
-## Features
+### Features
 
 * Interactive menu for selecting game option (rules, selecting difficulty level, audio mute ON/OFF)
 
