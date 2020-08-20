@@ -26,14 +26,16 @@
 
 * Interactive menu for selecting game option (rules, selecting difficulty level, audio mute ON/OFF).
 
-* Timer interval manipulation for image animation purposes.
-
 * Randomized math question display for each spaceship.
 
 * Randomized speed for target spaceships when descending.
 
 * Saving and loading a game
 
+* Game sound and sound effects
+
+* Score tracking with hit/miss percentage info.
+
 #### Game link: https://alienaddition.louisechan.ca/
 
-#### Link to game specification: 
+#### Link to game specification: [Game Specification](./docs/Alien Addition Shooter Game - Programming specification.pdf)
