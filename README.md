@@ -20,6 +20,8 @@
 
 * Event Listeners (keypress and touch/click)
 
+* Collision detection of objects
+
 #### Screenshots  
 
 <img src="./screenshots/titlescreen.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/rules.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/gameplay.png" alt="Title screen" width="260" height="335">
