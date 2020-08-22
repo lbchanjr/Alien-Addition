@@ -4,7 +4,7 @@
 
 #### Screenshots  
 
-<img src="./screenshots/titlescreen.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/rules.png" alt="Rules screen" width="260" height="335">     <img src="./screenshots/alienaddition.gif" alt="Game demo" height="335">
+<img src="./screenshots/titlescreen.png" alt="Title screen" width="260" height="335">     <img src="./screenshots/rules.png" alt="Rules screen" width="260" height="335">     <img src="./screenshots/alienaddition.gif" alt="Game demo" height="300">
 
 #### Technologies/Concepts used
 
