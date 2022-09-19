@@ -40,6 +40,6 @@
 
 * Score tracking with hit/miss percentage info.
 
-#### Game link: http://alienaddition.louisechan.ca/
+#### Game link: louisechan.ca/alienaddition
 
 #### Link to game specification: <a href="./docs/Alien Addition Shooter Game - Programming specification.pdf" target="_blank">[Game Specification]</a>
